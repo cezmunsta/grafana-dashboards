@@ -219,7 +219,7 @@ module.exports = {
     I.amOnPage(this.prometheusAlertUrl);
   },
 
-  async verifyAlertmanagerRuleAdded(ruleName, checkState = false, added=true) {
+  async verifyAlertmanagerRuleAdded(ruleName, checkState = false, added = true) {
     const headers = { Authorization: `Basic ${await I.getAuth()}` };
 
     for (let i = 0; i < 30; i++) {
@@ -239,16 +239,15 @@ module.exports = {
       I.refreshPage();
       I.wait(5);
 
-      if(!added && i===5){
+      if (!added && i === 5) {
         break;
       }
-      
     }
-    if(added){
-    I.seeElement(`//pre[contains(text(), '${ruleName}')]`);
-    I.see(ruleName);
-    }
-    else{
+
+    if (added) {
+      I.seeElement(`//pre[contains(text(), '${ruleName}')]`);
+      I.see(ruleName);
+    } else {
       I.dontSeeElement(`//pre[contains(text(), '${ruleName}')]`);
     }
   },
