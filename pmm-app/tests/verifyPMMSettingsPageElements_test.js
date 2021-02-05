@@ -18,7 +18,7 @@ Before(async (I, pmmSettingsPage) => {
   I.amOnPage(pmmSettingsPage.url);
 });
 
-Scenario('PMM-T97 - Verify server diagnostics on PMM Settings Page', async (I, pmmSettingsPage) => {
+Scenario('PMM-T87 - Verify server diagnostics on PMM Settings Page', async (I, pmmSettingsPage) => {
   const diagnostcsButtonLocator = pmmSettingsPage.fields.diagnosticsButton;
   const platform = pmmSettingsPage.sectionTabsList.perconaPlatform;
 
