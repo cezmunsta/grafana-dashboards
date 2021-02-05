@@ -19,12 +19,15 @@ Before(async (I, pmmSettingsPage) => {
 });
 
 Scenario('PMM-T87 - Verify server diagnostics on PMM Settings Page', async (I, pmmSettingsPage) => {
+  const diagnostcsButtonLocator = pmmSettingsPage.fields.diagnosticsButton;
+  const platform = pmmSettingsPage.sectionTabsList.perconaPlatform;
+
   await pmmSettingsPage.waitForPmmSettingsPageLoaded();
-  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.metrics, pmmSettingsPage.fields.diagnosticsButton);
-  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.advanced, pmmSettingsPage.fields.diagnosticsButton);
-  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.ssh, pmmSettingsPage.fields.diagnosticsButton);
-  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.alertmanager, pmmSettingsPage.fields.diagnosticsButton);
-  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.perconaPlatform, pmmSettingsPage.fields.diagnosticsButton);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.metrics, diagnostcsButtonLocator);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.advanced, diagnostcsButtonLocator);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.ssh, diagnostcsButtonLocator);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.alertmanager, diagnostcsButtonLocator);
+  await pmmSettingsPage.expandSection(platform, diagnostcsButtonLocator);
 });
 
 Scenario('PMM-T84 - Verify Section Tabs and Metrics Section Elements [critical]', async (I, pmmSettingsPage) => {
