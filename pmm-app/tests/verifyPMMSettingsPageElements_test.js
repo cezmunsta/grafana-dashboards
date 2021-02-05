@@ -18,6 +18,15 @@ Before(async (I, pmmSettingsPage) => {
   I.amOnPage(pmmSettingsPage.url);
 });
 
+Scenario('PMM-T87 - Verify server diagnostics on PMM Settings Page', async (I, pmmSettingsPage) => {
+  await pmmSettingsPage.waitForPmmSettingsPageLoaded();
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.metrics, pmmSettingsPage.fields.diagnosticsButton);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.advanced, pmmSettingsPage.fields.diagnosticsButton);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.ssh, pmmSettingsPage.fields.diagnosticsButton);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.alertmanager, pmmSettingsPage.fields.diagnosticsButton);
+  await pmmSettingsPage.expandSection(pmmSettingsPage.sectionTabsList.perconaPlatform, pmmSettingsPage.fields.diagnosticsButton);
+});
+
 Scenario('PMM-T84 - Verify Section Tabs and Metrics Section Elements [critical]', async (I, pmmSettingsPage) => {
   await pmmSettingsPage.waitForPmmSettingsPageLoaded();
   Object.values(pmmSettingsPage.sectionTabsList).forEach((value) => {
